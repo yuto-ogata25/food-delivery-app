@@ -12,8 +12,19 @@ import { Bookmark, Heart, Menu } from "lucide-react"
 import { Button } from "./ui/button"
 import Link from "next/link"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { createClient } from "@/utils/supabase/server"
+import { redirect } from "next/navigation"
 
-export default function MenuSheet() {
+export default async function MenuSheet() {
+
+const supabase = await createClient();
+const { data: { user } } = await supabase.auth.getUser()
+
+if (!user) {
+    redirect('/login');
+}
+const { avatar_url, full_name } = user.user_metadata;
+
   return (
     <Sheet>
         <SheetTrigger asChild>
@@ -30,11 +41,11 @@ export default function MenuSheet() {
             {/* ユーザー情報エリア */}
             <div className="flex items-center gap-5">
                 <Avatar>
-                    <AvatarImage src="https://github.com/shadcn.png" />
+                    <AvatarImage src={avatar_url} />
                     <AvatarFallback>ユーザー名</AvatarFallback>
                 </Avatar>
                 <div>
-                    <div className="font-bold">ユーザー名</div>
+                    <div className="font-bold">{full_name}</div>
                     <div>
                         <Link href={"#"} className="text-green-500 text-xs">アカウントを管理する</Link>
                     </div>
