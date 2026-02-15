@@ -9,10 +9,11 @@ interface SectionProps {
 export default function Section({children, title}: SectionProps) {
   return (
     <section>
-        <div className="flex items-center">
+        <div className="flex items-center justify-between">
             <h2>{title}</h2>
             <Button>すべて表示</Button>
         </div>
+        {children}
     </section>
   )
 }
