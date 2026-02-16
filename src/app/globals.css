@@ -1,38 +1,29 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-  /* ボタン（Primary）の定義：ライトモードは黒背景に白文字 */
-  --primary: #171717;
-  --primary-foreground: #ffffff;
-}
+@theme {
+  /* 基本の変数定義 */
+  --color-background: #ffffff;
+  --color-foreground: #171717;
+  --color-primary: #171717;
+  --color-primary-foreground: #ffffff;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    /* ダークモードは反転：白背景に黒文字 */
-    --primary: #ededed;
-    --primary-foreground: #0a0a0a;
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* ダークモードの上書き設定 */
+  @media (prefers-color-scheme: dark) {
+    --color-background: #0a0a0a;
+    --color-foreground: #ededed;
+    --color-primary: #ededed;
+    --color-primary-foreground: #0a0a0a;
   }
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  /* shadcn/uiのButtonコンポーネントが参照するクラスを紐付け */
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
+/* ベーススタイルの適用（変数を直接参照） */
 @layer base {
   body {
-    background: var(--background);
-    color: var(--foreground);
+    background-color: var(--color-background);
+    color: var(--color-foreground);
     font-family: var(--font-sans);
   }
 }
