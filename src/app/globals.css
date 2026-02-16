@@ -1,29 +1,26 @@
 @import "tailwindcss";
 
-@theme {
-  /* 基本の変数定義 */
-  --color-background: #ffffff;
-  --color-foreground: #171717;
-  --color-primary: #171717;
-  --color-primary-foreground: #ffffff;
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
 
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+}
 
-  /* ダークモードの上書き設定 */
-  @media (prefers-color-scheme: dark) {
-    --color-background: #0a0a0a;
-    --color-foreground: #ededed;
-    --color-primary: #ededed;
-    --color-primary-foreground: #0a0a0a;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
   }
 }
 
-/* ベーススタイルの適用（変数を直接参照） */
-@layer base {
-  body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
-    font-family: var(--font-sans);
-  }
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
 }

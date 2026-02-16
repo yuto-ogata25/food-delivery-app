@@ -14,6 +14,7 @@ import Link from "next/link"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { createClient } from "@/utils/supabase/server"
 import { redirect } from "next/navigation"
+import { logout } from "@/app/(auth)/login/actions"
 
 export default async function MenuSheet() {
 
@@ -69,7 +70,9 @@ const { avatar_url, full_name } = user.user_metadata;
             </ul>
 
            <SheetFooter>
-            <Button>ログアウト</Button>
+            <form>
+                <Button className="w-full" formAction={logout}>ログアウト</Button>
+            </form>
            </SheetFooter>
 
         </SheetContent>
