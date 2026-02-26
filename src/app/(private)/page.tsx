@@ -5,8 +5,8 @@ import Section from "@/components/section";
 export default function Home() {
   return (
     <Section title="近くのお店">
-      <CarouselContainer>
-        {Array.from({ length: 5}).map((_, index) => (
+      <CarouselContainer slideToShow={4}>
+        {Array.from({ length: 10}).map((_, index) => (
           <RestaurantCard key={index} />
         ))}
       </CarouselContainer>

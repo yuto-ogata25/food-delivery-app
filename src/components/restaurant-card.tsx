@@ -1,7 +1,5 @@
 import React from 'react'
 
 export default function RestaurantCard() {
-  return (
-    <div>RestaurantCard</div>
-  )
+  return <div className='bg-red-200'>RestaurantCard</div>
 }
