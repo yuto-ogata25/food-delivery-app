@@ -8,7 +8,13 @@ export default function RestaurantCard() {
         <div className="relative">
             <Link href={"/abc"} className='inset-0 absolute z-10'></Link>
             <div className="relative aspect-video rounded-lg overflow-hidden">
-                <Image className="object-cover" src={"/no_image.png"} fill alt="restaurant image"/>
+                <Image
+                 className="object-cover" 
+                 src={"/no_image.png"} 
+                 fill 
+                 alt="restaurant image"
+                 sizes="(max-width 1280px) 25vw, 280px"
+                 />
             </div>
             <div className="flex justify-between items-center">
                 <p className="font-bold">name</p>
